@@ -15,7 +15,7 @@ const routes = createBrowserRouter([
         path: "/",
         element: <Home />,
       },
-      
+
     ],
   },
   {
@@ -38,7 +38,7 @@ const routes = createBrowserRouter([
         path: "/dashboard/product/edit/:id",
         element: <EditProduct />,
       },
-      
+
     ],
   },
 ]);

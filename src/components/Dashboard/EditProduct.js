@@ -37,17 +37,17 @@ const EditProduct = () => {
       },
       body: JSON.stringify(product)
     }).then(res => res.json())
-    .then(data => {
-      if(data.success){
-        toast.success(data.message);
-        navigate("/dashboard/products")
-      } else {
-        toast.err(data.error)
-      }
-    })
-    .catch(err => toast.error(err.message))
+      .then(data => {
+        if (data.success) {
+          toast.success(data.message);
+          navigate("/dashboard/products")
+        } else {
+          toast.err(data.error)
+        }
+      })
+      .catch(err => toast.error(err.message))
   }
-  
+
   return (
     <div className="py-32 px-10 min-h-screen w-full">
       <div className="bg-white p-10 md:w-3/4 lg:w-1/2 mx-auto">
@@ -73,7 +73,6 @@ const EditProduct = () => {
               type="text"
               name="price"
               placeholder="price"
-              defaultValue={product?.price}
               className="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 text-gray-600 placeholder-gray-400 outline-none"
             />
           </div>
@@ -86,10 +85,8 @@ const EditProduct = () => {
               type="text"
               name="image"
               placeholder="url"
-              defaultValue={product?.image}
               className="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 text-gray-600 placeholder-gray-400 outline-none"
             />
-            <img src={product?.image} className="w-20" alt="" />
           </div>
 
           <div className="text-right">

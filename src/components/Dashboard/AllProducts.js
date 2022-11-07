@@ -7,6 +7,7 @@ const AllProducts = () => {
   const [products, setProducts] = useState([]);
   const [refresh, setRefresh] = useState(false);
 
+  // 01+02.Creta and Read Data using useEffect() With Map function
   useEffect(() => {
     fetch("http://localhost:5000/product")
       .then((res) => res.json())
@@ -20,21 +21,24 @@ const AllProducts = () => {
       .catch((err) => toast.error(err.message));
   }, [refresh]);
 
+
+  // 03.Delete data from client with MongoDB
   const handleDelete = (id) => {
     fetch(`http://localhost:5000/product/${id}`, {
       method: "DELETE",
     })
-    .then(res => res.json())
-    .then(data => {
-      if(data.success){
-        toast.success(data.message);
-        setRefresh(!refresh);
-      } else {
-        toast.error(data.error);
-      }
-    }).catch(err => toast.error(err.message))
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          toast.success(data.message);
+          setRefresh(!refresh);
+        } else {
+          toast.error(data.error);
+        }
+      }).catch(err => toast.error(err.message))
   };
 
+  // 04.Update/Edit data from client side with MongoDB
   const navigate = useNavigate();
   const handleEdit = (id) => {
     navigate(`/dashboard/product/edit/${id}`)

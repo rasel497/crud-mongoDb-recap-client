@@ -9,26 +9,29 @@ const Add = () => {
       image: e.target.image.value,
     };
 
-    fetch("http://localhost:5000/product", {
-      method: "POST",
+    // Create Operataion in POST method
+    fetch('http://localhost:5000/product', {
+      method: 'POST',
       headers: {
-        "content-type": "application/json"
+        'content-type': 'application/json'
       },
       body: JSON.stringify(product)
-    }).then(res => res.json())
-    .then(data => {
-      if(data.success){
-        toast.success(data.message);
-      } else {
-        toast.error(data.error);
-      }
     })
-    .catch(err => {
-      toast.error(err.message);
-    })
-    
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          toast.success(data.message);
+        }
+        else {
+          toast.error(data.error);
+        }
+      })
+      .catch(err => {
+        toast.error(err.message);
+      });
+
   };
-  
+
   return (
     <div className="py-32 px-10 min-h-screen w-full">
       <div className="bg-white p-10 md:w-3/4 lg:w-1/2 mx-auto">
